@@ -13,7 +13,6 @@
 		347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */; };
 		347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D22291CDF3A0C0035FA28 /* PeredachaData.swift */; };
 		348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6AA91C9B41760010EB3A /* ViewController.swift */; };
-		349860141CE3373C00A5A900 /* Unwraping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349860131CE3373C00A5A900 /* Unwraping.swift */; };
 		34A9A7271CE7ABD400F33113 /* UpdateSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9A7261CE7ABD400F33113 /* UpdateSocket.swift */; };
 		34E393981CAC1543009DC6CA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E393971CAC1543009DC6CA /* UserData.swift */; };
 		34E47EA81C7CFDCF002A1949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */; };
@@ -22,7 +21,6 @@
 		34E47EB21C7CFDCF002A1949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */; };
 		34E47EBA1C7CFDD8002A1949 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 34E47EB91C7CFDD8002A1949 /* Podfile */; };
 		34FEC82D1CABF2EC0089ABF6 /* ConnectSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */; };
-		34FEC8331CABFCBF0089ABF6 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC8321CABFCBF0089ABF6 /* Relation.swift */; };
 		8E545EA83A8B07E56F2AA7C6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E243E04F06792B73F35FC1 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +31,6 @@
 		347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		347D22291CDF3A0C0035FA28 /* PeredachaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeredachaData.swift; sourceTree = "<group>"; };
 		348C6AA91C9B41760010EB3A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		349860131CE3373C00A5A900 /* Unwraping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unwraping.swift; sourceTree = "<group>"; };
 		34A9A7261CE7ABD400F33113 /* UpdateSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSocket.swift; sourceTree = "<group>"; };
 		34E393971CAC1543009DC6CA /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		34E47EA41C7CFDCF002A1949 /* sockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +41,6 @@
 		34E47EB31C7CFDCF002A1949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34E47EB91C7CFDD8002A1949 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectSockets.swift; sourceTree = "<group>"; };
-		34FEC8321CABFCBF0089ABF6 /* Relation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		53C7EE2C2CF5B7D7FF0DDC80 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		96E243E04F06792B73F35FC1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,7 +102,6 @@
 				34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */,
 				348C6AA91C9B41760010EB3A /* ViewController.swift */,
 				34FEC8301CABFB130089ABF6 /* ConnectSocket */,
-				34FEC8341CABFCC90089ABF6 /* RelationRequest */,
 				34A9A7281CE7ABE800F33113 /* UpdateSocket */,
 				34E47EAB1C7CFDCF002A1949 /* Main.storyboard */,
 				34E393971CAC1543009DC6CA /* UserData.swift */,
@@ -116,7 +111,6 @@
 				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
 				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
 				347D22291CDF3A0C0035FA28 /* PeredachaData.swift */,
-				349860131CE3373C00A5A900 /* Unwraping.swift */,
 			);
 			path = sockets;
 			sourceTree = "<group>";
@@ -127,14 +121,6 @@
 				34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */,
 			);
 			name = ConnectSocket;
-			sourceTree = "<group>";
-		};
-		34FEC8341CABFCC90089ABF6 /* RelationRequest */ = {
-			isa = PBXGroup;
-			children = (
-				34FEC8321CABFCBF0089ABF6 /* Relation.swift */,
-			);
-			name = RelationRequest;
 			sourceTree = "<group>";
 		};
 		DFF991B7BD8BFB2E66577E6E /* Frameworks */ = {
@@ -278,8 +264,6 @@
 			files = (
 				34388FB11CDD4892004027E7 /* LoginViewController.swift in Sources */,
 				348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */,
-				349860141CE3373C00A5A900 /* Unwraping.swift in Sources */,
-				34FEC8331CABFCBF0089ABF6 /* Relation.swift in Sources */,
 				347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */,
 				34FEC82D1CABF2EC0089ABF6 /* ConnectSockets.swift in Sources */,
 				347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */,

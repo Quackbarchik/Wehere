@@ -14,7 +14,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
 
     @IBAction func button(sender: AnyObject) {ConnectSockets().connectSockets()}
-    @IBAction func relationButton(sender: AnyObject){RelationRequest().relationRequest()}
     @IBAction func exitButton(sender: AnyObject) {
         
     }

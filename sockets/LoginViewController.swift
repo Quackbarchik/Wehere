@@ -57,8 +57,11 @@ class LoginViewController: UIViewController {
                 print(getToken)
             
             TokenManager.mainToken = getToken as! String
-            
             }
+            
+            ConnectSockets().connectSockets()
+            
+        
             
             
 //            if let json = JSON(response.result.value) {

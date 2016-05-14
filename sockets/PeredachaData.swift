@@ -11,4 +11,5 @@ import Foundation
 
 struct TokenManager {
     static var mainToken : String = ""
+    
 }
