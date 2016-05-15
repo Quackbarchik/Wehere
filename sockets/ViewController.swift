@@ -47,16 +47,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func setImageViewRed(ns:NSNotification) {
         
-        let arr = ns.userInfo!["Relation"] as! UserDataClass
-        var location = CLLocationCoordinate2DMake(arr.latitude!, arr.longitude!)
+        let arr = ns.userInfo!["Relation"] as! [UserDataClass]
+        for user in arr{
+        var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
         var span = MKCoordinateSpanMake(0.02, 0.02)
         var region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         var annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = arr.name
-        annotation.subtitle = arr.user
+        annotation.title = user.name
+        annotation.subtitle = user.user
         mapView.addAnnotation(annotation)
+        }
     }
 
     override func viewDidAppear(animated: Bool) {

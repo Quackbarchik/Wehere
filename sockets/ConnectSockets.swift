@@ -32,7 +32,6 @@ class ConnectSockets : UIViewController {
         }
         ws.event.message = { message in
             if let text = message as? String {
-               
                 self.delegateMethod(text)
                 //Здесь приходит ответ в JSON'е, который потом отправляется путешесвтовать в конверт и уже от туда выдергивается код ошибки. РАУНД.
             }
@@ -54,6 +53,7 @@ class ConnectSockets : UIViewController {
     }
     
     func delegateMethod(jsonRaw: String){
+        
         if let data = jsonRaw.dataUsingEncoding(NSUTF8StringEncoding) {
             let json = JSON(data:data)
             var method = String()
@@ -67,15 +67,31 @@ class ConnectSockets : UIViewController {
                 
                 let convertData = jsonRaw.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
                     //Удаление квадратов и возврат норм джсона
-                controllerRelation(convertData)
-                
+                controllerRelation(jsonRaw)
             }
+            
+            else if(method=="update"){
+                print("update")
             }
+            
+        }
             
         }
     }
     
     func controllerRelation(text: String){
+        /*
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            
+            for (index,object) in  {
+                let name = object["device_ID"].stringValue
+                print(name)
+            }
+        }
+        */
+        
+        var withoutDump  = text.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
+        
         var IMEI = String()
         var latitude = CLLocationDegrees()
         var longitude = CLLocationDegrees()
@@ -87,20 +103,31 @@ class ConnectSockets : UIViewController {
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
             let json = JSON(data:data)
             
-            if let long = CLLocationDegrees(String(json["data","longitude"])) {
-                longitude = long
-            }
-            if let lat = CLLocationDegrees(String(json["data","latitude"])) {
-                latitude = lat
-            }
-            IMEI =  String(json["data"]["IMEI"])
-            deviceId = String(json["data","device_ID"])
-            link_to_image = String(json["data","link_to_image"])
-            name = String(json["data","name"])
-            user = String(json["data","user"])
+            var collectionUser = [UserDataClass]()
             
-            var dataGood = UserDataClass(IMEI:IMEI,latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
-            let sendData:[String:AnyObject] = ["Relation":dataGood]
+            for res in json["data"].arrayValue{
+                print(res)
+                if let long = CLLocationDegrees(String(res["longitude"])) {
+                    longitude = long
+                }
+                if let lat = CLLocationDegrees(String(res["latitude"])) {
+                    latitude = lat
+                }
+                IMEI =  String(res["IMEI"])
+                deviceId = String(res["device_ID"])
+                link_to_image = String(res["link_to_image"])
+                name = String(res["name"])
+                user = String(res["user"])
+                
+                let userPrepare = UserDataClass(IMEI: IMEI, latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                
+                collectionUser.append(userPrepare)
+            }
+            
+            
+            print(collectionUser.count)
+           
+            let sendData:[String:AnyObject] = ["Relation":collectionUser]
             NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
         }
 }
