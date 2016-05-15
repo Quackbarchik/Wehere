@@ -11,11 +11,13 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate {
+    var usersArray = [UserDataClass]()
+    var usersAnnotation = [MKPointAnnotation]()
     @IBOutlet weak var mapView: MKMapView!
 
     @IBAction func button(sender: AnyObject) {ConnectSockets().connectSockets()}
     @IBAction func exitButton(sender: AnyObject) {
-        
+        dropMapAndArray()
     }
     
     //--------------------------
@@ -23,42 +25,57 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         
-       // var loca = CLLocationCoordinate2DMake()
-//print(loca)
-//        var span = MKCoordinateSpanMake(0.02, 0.02)
-//        var region = MKCoordinateRegion(center: loca, span: span)
-//        
-//        mapView.setRegion(region, animated: true)
-//        
-//        var annotation = MKPointAnnotation()
-//        annotation.coordinate = loca
-//        annotation.title = "Tittle"
-//        annotation.subtitle = "Sub"
-//        
-//        mapView.addAnnotation(annotation)
-        
-        
-        
     super.viewDidLoad()
         
     
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setImageViewRed), name: "relation", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
     }
     
-    func setImageViewRed(ns:NSNotification) {
+    func update(ns:NSNotification){
+        var userUpdate = ns.userInfo!["Relation"] as! UserDataClass
+        for user in 0...usersArray.count-1{
+           if (usersArray[user].deviceId == userUpdate.deviceId){
+                usersArray.removeAtIndex(user)
+                usersArray.append(userUpdate)
+            }
+        }
+        
+        inflateUserMaps()
+        
+    }
+
+    func realation(ns:NSNotification) {
         
         let arr = ns.userInfo!["Relation"] as! [UserDataClass]
-        for user in arr{
-        var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
-        var span = MKCoordinateSpanMake(0.02, 0.02)
-        var region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        var annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = user.name
-        annotation.subtitle = user.user
-        mapView.addAnnotation(annotation)
+        usersArray.appendContentsOf(arr)
+        inflateUserMaps()
+    }
+    
+    func inflateUserMaps(){
+        
+        mapView.removeAnnotations(usersAnnotation)
+        usersAnnotation.removeAll()
+        for user in usersArray{
+            var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
+            var span = MKCoordinateSpanMake(20, 20)
+            var region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = user.name
+            annotation.subtitle = user.user
+            
+            usersAnnotation.append(annotation)
         }
+        mapView.addAnnotations(usersAnnotation)
+    }
+    
+    func dropMapAndArray(){
+        mapView.removeAnnotations(usersAnnotation)
+        usersAnnotation.removeAll()
+        usersArray.removeAll()
     }
 
     override func viewDidAppear(animated: Bool) {

@@ -64,32 +64,53 @@ class ConnectSockets : UIViewController {
             }
             
             else if(method=="list_relation"){
-                
-                let convertData = jsonRaw.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
-                    //Удаление квадратов и возврат норм джсона
                 controllerRelation(jsonRaw)
             }
             
             else if(method=="update"){
-                print("update")
+                controllerUpdate(jsonRaw)
             }
             
         }
             
         }
     }
+
+func controllerUpdate(text: String){
+    var IMEI = String()
+    var latitude = CLLocationDegrees()
+    var longitude = CLLocationDegrees()
+    var deviceId = String()
+    var link_to_image = String()
+    var name = String()
+    var user = String()
     
-    func controllerRelation(text: String){
-        /*
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-            
-            for (index,object) in  {
-                let name = object["device_ID"].stringValue
-                print(name)
-            }
-        }
-        */
+    if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
+        let json = JSON(data:data)
         
+        if let long = CLLocationDegrees(String(json["data","longitude"])) {
+            longitude = long
+        }
+        if let lat = CLLocationDegrees(String(json["data","latitude"])) {
+            latitude = lat
+        }
+        IMEI =  String(json["data"]["IMEI"])
+        deviceId = String(json["data","device_ID"])
+        link_to_image = String(json["data","link_to_image"])
+        name = String(json["data","name"])
+        user = String(json["data","user"])
+        
+        var dataGood = UserDataClass(IMEI:IMEI,latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
+        let sendData:[String:AnyObject] = ["Relation":dataGood]
+        NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
+    }
+    
+    
+
+}
+
+    func controllerRelation(text: String){
+       
         var withoutDump  = text.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
         
         var IMEI = String()
