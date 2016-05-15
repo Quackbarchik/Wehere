@@ -18,6 +18,8 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var repeatPasswordTextFiled: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     
+    let viewController : ViewController = ViewController()
+    
     var token : String = ""
     
     //--------------------------
@@ -63,35 +65,48 @@ class RegisterPageViewController: UIViewController {
             
             if let getToken = json["token"].string {
                 self.token = getToken
-                
-               TokenManager.mainToken = self.token              
+               TokenManager.mainToken = self.token
+                self.performSegueWithIdentifier("mapID", sender: self)
+            }else if let error = json["data"]["code"].int {
+                if (error == 1){
+                    self.displayAlert("user is exist")
+                }
             }
         }
-
-        var myAlert = UIAlertController(title: "Alert", message: "Registration is sucessful. Good job!", preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default){action in self.dismissViewControllerAnimated(true, completion: nil)}
         
-        myAlert.addAction(okAction)
-        self.presentViewController(myAlert, animated: true, completion: nil)
+//        var myAlertNo = UIAlertController(title: "Alert", message: "Registration is sucessful. Good job!", preferredStyle: UIAlertControllerStyle.Alert)
+//        let okActionNo = UIAlertAction(title: "OK", style: .Default){action in self.dismissViewControllerAnimated(true, completion: nil)}
+//
+//        
+//        
+//        var myAlert = UIAlertController(title: "Alert", message: "Registration is sucessful. Good job!", preferredStyle: UIAlertControllerStyle.Alert)
+//        let okAction = UIAlertAction(title: "OK", style: .Default){action in self.dismissViewControllerAnimated(true, completion: nil)}
+//        
+//        myAlert.addAction(okAction)
+//        self.presentViewController(myAlert, animated: true, completion: nil)
         
     }
     
+//    func switchScreen() {
+////        let mainStoryboard = UIStoryboard(name: "Storyboard", bundle: NSBundle.mainBundle())
+////        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
+////        self.presentViewController(vc, animated: true, completion: nil)
+//        let mapViewController = self.storyboard?.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
+//        self.navigationController?.pushViewController(mapViewController, animated: true)
+//    
+//    }
     
     func displayAlert(userMessage:String){
         
         var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         var okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         myAlert.addAction(okAction)
-        
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
 
     @IBAction func accReadyGoToLogin(sender: AnyObject) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-        
-        
+
     }
     /*
     // MARK: - Navigation

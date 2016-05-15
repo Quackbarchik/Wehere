@@ -39,7 +39,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Подключиться</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Connect</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Reg</string>
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>

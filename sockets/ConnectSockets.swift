@@ -104,9 +104,6 @@ func controllerUpdate(text: String){
         let sendData:[String:AnyObject] = ["Relation":dataGood]
         NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
     }
-    
-    
-
 }
 
     func controllerRelation(text: String){

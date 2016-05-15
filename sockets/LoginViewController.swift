@@ -58,7 +58,6 @@ class LoginViewController: UIViewController {
             
             TokenManager.mainToken = getToken as! String
             }
-            
             ConnectSockets().connectSockets()
             
         

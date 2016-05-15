@@ -13,12 +13,10 @@ import CoreLocation
 class ViewController: UIViewController, MKMapViewDelegate {
     var usersArray = [UserDataClass]()
     var usersAnnotation = [MKPointAnnotation]()
+    
     @IBOutlet weak var mapView: MKMapView!
-
-    @IBAction func button(sender: AnyObject) {ConnectSockets().connectSockets()}
-    @IBAction func exitButton(sender: AnyObject) {
-        dropMapAndArray()
-    }
+    @IBAction func button(sender: AnyObject) { }
+    @IBAction func exitButton(sender: AnyObject) {dropMapAndArray()}
     
     //--------------------------
 
@@ -26,11 +24,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         
     super.viewDidLoad()
-        
-    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
-        
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
+        
+        
+        let mapViewController = ViewController()
+        
     }
     
     func update(ns:NSNotification){
@@ -41,13 +40,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 usersArray.append(userUpdate)
             }
         }
-        
         inflateUserMaps()
-        
     }
 
     func realation(ns:NSNotification) {
-        
         let arr = ns.userInfo!["Relation"] as! [UserDataClass]
         usersArray.appendContentsOf(arr)
         inflateUserMaps()
@@ -66,7 +62,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotation.coordinate = location
             annotation.title = user.name
             annotation.subtitle = user.user
-            
             usersAnnotation.append(annotation)
         }
         mapView.addAnnotations(usersAnnotation)
@@ -84,7 +79,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: 3D TOUCH
     enum Shortcut: String {
-        case openBlue = "Connect"
+        case openBlue = "Reg"
     }
     func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool {
         

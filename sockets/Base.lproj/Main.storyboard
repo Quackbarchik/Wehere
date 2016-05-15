@@ -9,7 +9,7 @@
         <!--Wehere | LOGIN-->
         <scene sceneID="nVF-xL-KOT">
             <objects>
-                <viewController id="rpP-m4-O3L" customClass="LoginViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginID" id="rpP-m4-O3L" customClass="LoginViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="clk-Zu-uzM"/>
                         <viewControllerLayoutGuide type="bottom" id="FdM-k2-maH"/>
@@ -81,7 +81,7 @@
         <!--Register Page View Controller-->
         <scene sceneID="G68-kz-zDx">
             <objects>
-                <viewController id="eO4-RU-BRv" customClass="RegisterPageViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisID" id="eO4-RU-BRv" customClass="RegisterPageViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lex-lx-M0L"/>
                         <viewControllerLayoutGuide type="bottom" id="Sxw-kL-iKv"/>
@@ -165,6 +165,7 @@
                         <outlet property="userEmailTextFiled" destination="Hi0-56-lJx" id="Gry-it-69j"/>
                         <outlet property="userNameTextField" destination="DD5-fp-Lzq" id="LEl-hA-g6w"/>
                         <outlet property="userPasswordTextFiled" destination="RKO-6G-pbx" id="uf8-lv-gdc"/>
+                        <segue destination="boo-DU-ezo" kind="modal" identifier="mapID" id="4xW-3g-8wP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Lq-67-brH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,7 +175,7 @@
         <!--View Controller-->
         <scene sceneID="CWi-tf-RCK">
             <objects>
-                <viewController id="boo-DU-ezo" customClass="ViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="mapViewID" storyboardIdentifier="mapViewID" id="boo-DU-ezo" customClass="ViewController" customModule="sockets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f5H-pt-tP8"/>
                         <viewControllerLayoutGuide type="bottom" id="mM4-2R-IFq"/>
@@ -183,45 +184,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAD-jl-A0V">
-                                <rect key="frame" x="20" y="82" width="41" height="30"/>
-                                <state key="normal" title="AUTH"/>
-                                <connections>
-                                    <action selector="button:" destination="boo-DU-ezo" eventType="touchUpInside" id="0Cx-rs-3fO"/>
-                                </connections>
-                            </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dui-gH-tFE">
-                                <rect key="frame" x="0.0" y="130" width="320" height="438"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dui-gH-tFE">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <connections>
                                     <outlet property="delegate" destination="boo-DU-ezo" id="8B3-5u-hao"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nt-z8-iV0">
-                                <rect key="frame" x="263" y="82" width="37" height="30"/>
-                                <state key="normal" title="RELA"/>
-                                <connections>
-                                    <action selector="relationButton:" destination="boo-DU-ezo" eventType="touchUpInside" id="giJ-v0-3Y1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvY-hs-eXz">
-                                <rect key="frame" x="144" y="82" width="32" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvY-hs-eXz">
+                                <rect key="frame" x="91" y="49" width="139" height="60"/>
                                 <state key="normal" title="EXIT"/>
                                 <connections>
                                     <action selector="exitButton:" destination="boo-DU-ezo" eventType="touchUpInside" id="7aD-M9-fdL"/>
                                     <segue destination="rpP-m4-O3L" kind="modal" id="Dss-B2-g5T"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAi-zD-j5N">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Family" id="kQj-2w-N3l"/>
+                                    <tabBarItem title="Map" id="ajv-Pj-pD4"/>
+                                    <tabBarItem title="Info" id="4Kb-2m-xmd"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mM4-2R-IFq" firstAttribute="top" secondItem="AvY-hs-eXz" secondAttribute="bottom" constant="459" id="3KM-Fe-9zl"/>
                             <constraint firstAttribute="trailing" secondItem="dui-gH-tFE" secondAttribute="trailing" id="3Sk-kF-VN8"/>
+                            <constraint firstItem="AvY-hs-eXz" firstAttribute="leading" secondItem="TcY-NP-F08" secondAttribute="leadingMargin" constant="75" id="B6q-rI-BEu"/>
                             <constraint firstItem="dui-gH-tFE" firstAttribute="leading" secondItem="TcY-NP-F08" secondAttribute="leading" id="DKO-Sk-Cu4"/>
-                            <constraint firstItem="WAD-jl-A0V" firstAttribute="leading" secondItem="TcY-NP-F08" secondAttribute="leadingMargin" constant="4" id="EKU-Sz-Xlz"/>
-                            <constraint firstItem="4nt-z8-iV0" firstAttribute="baseline" secondItem="WAD-jl-A0V" secondAttribute="baseline" id="Wem-5a-fJy"/>
-                            <constraint firstItem="4nt-z8-iV0" firstAttribute="top" secondItem="f5H-pt-tP8" secondAttribute="bottom" constant="18" id="j96-lm-r1q"/>
+                            <constraint firstItem="AvY-hs-eXz" firstAttribute="top" secondItem="f5H-pt-tP8" secondAttribute="bottom" constant="29" id="oNS-aL-pqt"/>
                             <constraint firstItem="dui-gH-tFE" firstAttribute="bottom" secondItem="mM4-2R-IFq" secondAttribute="top" id="pYI-HE-7Mn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4nt-z8-iV0" secondAttribute="trailing" constant="4" id="pk2-Oy-2Xn"/>
-                            <constraint firstItem="dui-gH-tFE" firstAttribute="top" secondItem="4nt-z8-iV0" secondAttribute="bottom" constant="18" id="wSK-rK-SBj"/>
+                            <constraint firstItem="AvY-hs-eXz" firstAttribute="centerX" secondItem="dui-gH-tFE" secondAttribute="centerX" id="qrS-dc-oVB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WM7-eZ-VNW"/>
@@ -254,5 +249,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Dss-B2-g5T"/>
+        <segue reference="4xW-3g-8wP"/>
     </inferredMetricsTieBreakers>
 </document>

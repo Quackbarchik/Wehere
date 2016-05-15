@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 3D TOUCH
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         
-        ConnectSockets().connectSockets()
+        //Заглушка для 3д тач
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
