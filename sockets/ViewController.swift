@@ -15,7 +15,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var usersAnnotation = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func button(sender: AnyObject) { }
     @IBAction func exitButton(sender: AnyObject) {dropMapAndArray()}
     
     //--------------------------
@@ -26,14 +25,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
-        
-        
-        let mapViewController = ViewController()
-        
     }
     
     func update(ns:NSNotification){
-        var userUpdate = ns.userInfo!["Relation"] as! UserDataClass
+        let userUpdate = ns.userInfo!["Relation"] as! UserDataClass
         for user in 0...usersArray.count-1{
            if (usersArray[user].deviceId == userUpdate.deviceId){
                 usersArray.removeAtIndex(user)
@@ -54,11 +49,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         for user in usersArray{
-            var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
-            var span = MKCoordinateSpanMake(20, 20)
-            var region = MKCoordinateRegion(center: location, span: span)
+            let location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
+            let span = MKCoordinateSpanMake(20, 20)
+            let region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
-            var annotation = MKPointAnnotation()
+            let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = user.name
             annotation.subtitle = user.user
@@ -71,6 +66,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         usersArray.removeAll()
+        self.performSegueWithIdentifier("ExitViewID", sender: self)
     }
 
     override func viewDidAppear(animated: Bool) {
