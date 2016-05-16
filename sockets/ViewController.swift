@@ -49,9 +49,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         for user in usersArray{
-            let location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
-            let span = MKCoordinateSpanMake(20, 20)
-            let region = MKCoordinateRegion(center: location, span: span)
+            var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
+            var span = MKCoordinateSpanMake(20, 20)
+            var region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location

@@ -64,8 +64,7 @@ class RegisterPageViewController: UIViewController {
             let json = JSON(response.result.value!)
             
             if let getToken = json["token"].string {
-                self.token = getToken
-               TokenManager.mainToken = self.token
+                TokenManager.setToken(getToken)
                 self.performSegueWithIdentifier("mapID", sender: self)
             }else if let error = json["data"]["code"].int {
                 if (error == 1){

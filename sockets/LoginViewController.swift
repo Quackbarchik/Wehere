@@ -53,12 +53,21 @@ class LoginViewController: UIViewController {
             
             var token = response.result.value?.valueForKey("token")
             
-            if let getToken = token{
-                print(getToken)
-            
-            TokenManager.mainToken = getToken as! String
+            if (ConnectSockets.isConnection){
+                
+                if let getToken = token{
+                    print(getToken)
+                    
+                    TokenManager.setToken(getToken as! String)
+                    
+                    let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(getToken as! String))"]
+                    NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
+                }
+                
+                
+            }else{
+                print("PUTIN")
             }
-            ConnectSockets().connectSockets()
             
         
             

@@ -13,22 +13,27 @@ import MapKit
 class ConnectSockets : UIViewController {
     
     let ws = WebSocket("ws://176.56.50.175:8000/core/socket/new/")
-    let methodAuth : JSON = ["method":"auth","data":["token":"\(TokenManager.mainToken)"]]
-    let methodRelation : JSON = ["method":"list_relation","data":["token":"\(TokenManager.mainToken)"]]
     var codeError = String()
-    
-//--------------------------
-    
-    func connectSockets(){
-        let send : ()->() = {
-            self.ws.send("\(self.methodAuth)")
+    static var isConnection :Bool = false
+
+    func sendMessage(notification:NSNotification){
+        
+        if let message = notification.userInfo!["message"]{
+                self.ws.send(message)
+
         }
+    }
+   
+    func connectSockets(){
         ws.event.open = {
-            send()
-            print("Соединение впорядке")
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.sendMessage), name: "socket", object:nil)
+            
+            ConnectSockets.isConnection = true
         }
         ws.event.close = { code, reason, clean in
             print("Соединение разорвано")
+            ConnectSockets.isConnection = false
         }
         ws.event.message = { message in
             if let text = message as? String {
@@ -38,19 +43,19 @@ class ConnectSockets : UIViewController {
         }
     }
     
-    func coconvertJSON(text:String) ->Bool{
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-            let json = JSON(data:data)
-            codeError = String(json["data"]["code"])
-            
-            if codeError == "666" {
-                return true
-            }else if codeError == "66"{
-                print("Code = 66")
-            }
-        }
-    return false
-    }
+//    func coconvertJSON(text:String) ->Bool{
+//        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+//            let json = JSON(data:data)
+//            codeError = String(json["data"]["code"])
+//            
+//            if codeError == "666" {
+//                return true
+//            }else if codeError == "66"{
+//                print("Code = 66")
+//            }
+//        }
+//    return false
+//    }
     
     func delegateMethod(jsonRaw: String){
         
@@ -60,7 +65,7 @@ class ConnectSockets : UIViewController {
             method = String(json["method"])
             
             if(method=="auth"){
-                self.ws.send(self.methodRelation)
+                ws.send(TokenManager.getRelation(TokenManager.getToken()))
             }
             
             else if(method=="list_relation"){

@@ -7,8 +7,26 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 struct TokenManager {
-    static var mainToken : String = ""
+
+    static var token :String = ""
+    
+    static func getAuth(token:String) -> JSON {
+        return ["method":"auth","data":["token":"\(token)"]]
+    }
+    
+    static func getRelation(token:String) ->JSON{
+        return ["method":"list_relation","data":["token":"\(token)"]]
+    }
+    
+    static func setToken(token:String) {
+        self.token = token
+    }
+    
+    static func getToken()-> String{
+        return token
+    }
+    
 }
