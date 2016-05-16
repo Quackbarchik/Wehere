@@ -36,6 +36,7 @@ class ConnectSockets : UIViewController {
             ConnectSockets.isConnection = false
         }
         ws.event.message = { message in
+            print(1488)
             if let text = message as? String {
                 self.delegateMethod(text)
                 //Здесь приходит ответ в JSON'е, который потом отправляется путешесвтовать в конверт и уже от туда выдергивается код ошибки. РАУНД.

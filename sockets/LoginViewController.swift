@@ -57,11 +57,7 @@ class LoginViewController: UIViewController {
                 
                 if let getToken = token{
                     print(getToken)
-                    
                     TokenManager.setToken(getToken as! String)
-                    
-                    let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(getToken as! String))"]
-                    NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
                 }
                 
                 

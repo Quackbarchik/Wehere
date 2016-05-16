@@ -15,16 +15,33 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var usersAnnotation = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func exitButton(sender: AnyObject) {dropMapAndArray()}
+    @IBAction func exitButton(sender: AnyObject) {
+        //dropMapndArray()
+        check()
+            }
     
     //--------------------------
 
-    
+    func check(){
+        if (ConnectSockets.isConnection) {
+            let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(TokenManager.getToken()))"]
+            NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
+            
+
+        }else{
+            print("not")
+        }
+    }
     override func viewDidLoad() {
         
     super.viewDidLoad()
+        
+        let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(TokenManager.getToken()))"]
+        NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)        
     }
     
     func update(ns:NSNotification){
