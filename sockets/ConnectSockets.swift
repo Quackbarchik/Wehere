@@ -15,18 +15,18 @@ class ConnectSockets : UIViewController {
     let ws = WebSocket("ws://176.56.50.175:8000/core/socket/new/")
     var codeError = String()
     static var isConnection :Bool = false
-
+    var users : UserDataClass!
+    
     func sendMessage(notification:NSNotification){
         
         if let message = notification.userInfo!["message"]{
                 self.ws.send(message)
-
         }
     }
    
     func connectSockets(){
+        
         ws.event.open = {
-            
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.sendMessage), name: "socket", object:nil)
             
             ConnectSockets.isConnection = true
@@ -36,27 +36,12 @@ class ConnectSockets : UIViewController {
             ConnectSockets.isConnection = false
         }
         ws.event.message = { message in
-            print(1488)
             if let text = message as? String {
                 self.delegateMethod(text)
                 //Здесь приходит ответ в JSON'е, который потом отправляется путешесвтовать в конверт и уже от туда выдергивается код ошибки. РАУНД.
             }
         }
     }
-    
-//    func coconvertJSON(text:String) ->Bool{
-//        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-//            let json = JSON(data:data)
-//            codeError = String(json["data"]["code"])
-//            
-//            if codeError == "666" {
-//                return true
-//            }else if codeError == "66"{
-//                print("Code = 66")
-//            }
-//        }
-//    return false
-//    }
     
     func delegateMethod(jsonRaw: String){
         
@@ -66,24 +51,20 @@ class ConnectSockets : UIViewController {
             method = String(json["method"])
             
             if(method=="auth"){
-                ws.send(TokenManager.getRelation(TokenManager.getToken()))
+            ws.send(TokenManager.getRelation(TokenManager.getToken()))
             }
-            
-            else if(method=="list_relation"){
+                else if(method=="list_relation"){
                 controllerRelation(jsonRaw)
-            }
-            
-            else if(method=="update"){
-                controllerUpdate(jsonRaw)
-            }
-            
-        }
-            
+                }
+                    else if(method=="update"){
+                    controllerUpdate(jsonRaw)
+                    }
         }
     }
 
+
 func controllerUpdate(text: String){
-    var IMEI = String()
+    
     var latitude = CLLocationDegrees()
     var longitude = CLLocationDegrees()
     var deviceId = String()
@@ -93,20 +74,18 @@ func controllerUpdate(text: String){
     
     if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
         let json = JSON(data:data)
+            if let long = CLLocationDegrees(String(json["data","longitude"])) {
+                longitude = long
+            }
+                if let lat = CLLocationDegrees(String(json["data","latitude"])) {
+                    latitude = lat
+                }
+            deviceId = String(json["data","device_ID"])
+            link_to_image = String(json["data","link_to_image"])
+            name = String(json["data","name"])
+            user = String(json["data","user"])
         
-        if let long = CLLocationDegrees(String(json["data","longitude"])) {
-            longitude = long
-        }
-        if let lat = CLLocationDegrees(String(json["data","latitude"])) {
-            latitude = lat
-        }
-        IMEI =  String(json["data"]["IMEI"])
-        deviceId = String(json["data","device_ID"])
-        link_to_image = String(json["data","link_to_image"])
-        name = String(json["data","name"])
-        user = String(json["data","user"])
-        
-        var dataGood = UserDataClass(IMEI:IMEI,latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
+        let dataGood = UserDataClass(latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
         let sendData:[String:AnyObject] = ["Relation":dataGood]
         NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
     }
@@ -114,9 +93,8 @@ func controllerUpdate(text: String){
 
     func controllerRelation(text: String){
        
-        var withoutDump  = text.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
+    //    let withoutDump  = text.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
         
-        var IMEI = String()
         var latitude = CLLocationDegrees()
         var longitude = CLLocationDegrees()
         var deviceId = String()
@@ -130,28 +108,26 @@ func controllerUpdate(text: String){
             var collectionUser = [UserDataClass]()
             
             for res in json["data"].arrayValue{
-                print(res)
+
                 if let long = CLLocationDegrees(String(res["longitude"])) {
                     longitude = long
                 }
                 if let lat = CLLocationDegrees(String(res["latitude"])) {
                     latitude = lat
                 }
-                IMEI =  String(res["IMEI"])
                 deviceId = String(res["device_ID"])
                 link_to_image = String(res["link_to_image"])
                 name = String(res["name"])
                 user = String(res["user"])
                 
-                let userPrepare = UserDataClass(IMEI: IMEI, latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
                 
                 collectionUser.append(userPrepare)
-            }
-            
-            
-            print(collectionUser.count)
+                print("Children count: \(collectionUser.count)")
            
-            let sendData:[String:AnyObject] = ["Relation":collectionUser]
-            NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
+                let sendData:[String:AnyObject] = ["Relation":collectionUser]
+                NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
+            }
         }
+}
 }

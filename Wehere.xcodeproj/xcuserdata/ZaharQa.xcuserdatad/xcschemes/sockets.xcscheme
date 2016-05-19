@@ -17,7 +17,7 @@
                BlueprintIdentifier = "34E47EA31C7CFDCF002A1949"
                BuildableName = "sockets.app"
                BlueprintName = "sockets"
-               ReferencedContainer = "container:sockets.xcodeproj">
+               ReferencedContainer = "container:Wehere.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "34E47EA31C7CFDCF002A1949"
             BuildableName = "sockets.app"
             BlueprintName = "sockets"
-            ReferencedContainer = "container:sockets.xcodeproj">
+            ReferencedContainer = "container:Wehere.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "34E47EA31C7CFDCF002A1949"
             BuildableName = "sockets.app"
             BlueprintName = "sockets"
-            ReferencedContainer = "container:sockets.xcodeproj">
+            ReferencedContainer = "container:Wehere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "34E47EA31C7CFDCF002A1949"
             BuildableName = "sockets.app"
             BlueprintName = "sockets"
-            ReferencedContainer = "container:sockets.xcodeproj">
+            ReferencedContainer = "container:Wehere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

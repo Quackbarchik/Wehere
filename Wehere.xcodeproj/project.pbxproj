@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		34388FB11CDD4892004027E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34388FB01CDD4892004027E7 /* LoginViewController.swift */; };
+		343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D83441CEA967D002A9421 /* ChildrenAdd.swift */; };
+		343D83471CEA99A4002A9421 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343D83461CEA99A4002A9421 /* CoreData.framework */; };
 		347A864B1CA831F7008405A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347A864A1CA831F7008405A9 /* CoreLocation.framework */; };
 		347A864D1CA831FD008405A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347A864C1CA831FD008405A9 /* MapKit.framework */; };
 		347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */; };
 		347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D22291CDF3A0C0035FA28 /* PeredachaData.swift */; };
 		348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6AA91C9B41760010EB3A /* ViewController.swift */; };
-		34A9A7271CE7ABD400F33113 /* UpdateSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A9A7261CE7ABD400F33113 /* UpdateSocket.swift */; };
+		34E0B9191CEBEBC200DF027E /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */; };
+		34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */; };
+		34E0B91D1CEBED0900DF027E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B91B1CEBED0900DF027E /* User.swift */; };
 		34E393981CAC1543009DC6CA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E393971CAC1543009DC6CA /* UserData.swift */; };
 		34E47EA81C7CFDCF002A1949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */; };
 		34E47EAD1C7CFDCF002A1949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E47EAB1C7CFDCF002A1949 /* Main.storyboard */; };
@@ -26,12 +30,16 @@
 
 /* Begin PBXFileReference section */
 		34388FB01CDD4892004027E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		343D83441CEA967D002A9421 /* ChildrenAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrenAdd.swift; sourceTree = "<group>"; };
+		343D83461CEA99A4002A9421 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		347A864A1CA831F7008405A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		347A864C1CA831FD008405A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		347D22291CDF3A0C0035FA28 /* PeredachaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeredachaData.swift; sourceTree = "<group>"; };
 		348C6AA91C9B41760010EB3A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		34A9A7261CE7ABD400F33113 /* UpdateSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSocket.swift; sourceTree = "<group>"; };
+		34E0B9181CEBEBC200DF027E /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
+		34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		34E0B91B1CEBED0900DF027E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34E393971CAC1543009DC6CA /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		34E47EA41C7CFDCF002A1949 /* sockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343D83471CEA99A4002A9421 /* CoreData.framework in Frameworks */,
 				347A864D1CA831FD008405A9 /* MapKit.framework in Frameworks */,
 				347A864B1CA831F7008405A9 /* CoreLocation.framework in Frameworks */,
 				8E545EA83A8B07E56F2AA7C6 /* Pods.framework in Frameworks */,
@@ -67,14 +76,6 @@
 				C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		34A9A7281CE7ABE800F33113 /* UpdateSocket */ = {
-			isa = PBXGroup;
-			children = (
-				34A9A7261CE7ABD400F33113 /* UpdateSocket.swift */,
-			);
-			name = UpdateSocket;
 			sourceTree = "<group>";
 		};
 		34E47E9B1C7CFDCF002A1949 = {
@@ -101,31 +102,27 @@
 			children = (
 				34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */,
 				348C6AA91C9B41760010EB3A /* ViewController.swift */,
-				34FEC8301CABFB130089ABF6 /* ConnectSocket */,
-				34A9A7281CE7ABE800F33113 /* UpdateSocket */,
-				34E47EAB1C7CFDCF002A1949 /* Main.storyboard */,
+				343D83441CEA967D002A9421 /* ChildrenAdd.swift */,
+				34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */,
 				34E393971CAC1543009DC6CA /* UserData.swift */,
-				34E47EAE1C7CFDCF002A1949 /* Assets.xcassets */,
-				34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */,
-				34E47EB31C7CFDCF002A1949 /* Info.plist */,
 				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
 				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
 				347D22291CDF3A0C0035FA28 /* PeredachaData.swift */,
+				34E47EAB1C7CFDCF002A1949 /* Main.storyboard */,
+				34E47EAE1C7CFDCF002A1949 /* Assets.xcassets */,
+				34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */,
+				34E47EB31C7CFDCF002A1949 /* Info.plist */,
+				34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */,
+				34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */,
+				34E0B91B1CEBED0900DF027E /* User.swift */,
 			);
 			path = sockets;
-			sourceTree = "<group>";
-		};
-		34FEC8301CABFB130089ABF6 /* ConnectSocket */ = {
-			isa = PBXGroup;
-			children = (
-				34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */,
-			);
-			name = ConnectSocket;
 			sourceTree = "<group>";
 		};
 		DFF991B7BD8BFB2E66577E6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				343D83461CEA99A4002A9421 /* CoreData.framework */,
 				347A864C1CA831FD008405A9 /* MapKit.framework */,
 				347A864A1CA831F7008405A9 /* CoreLocation.framework */,
 				96E243E04F06792B73F35FC1 /* Pods.framework */,
@@ -177,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34E47E9F1C7CFDCF002A1949 /* Build configuration list for PBXProject "sockets" */;
+			buildConfigurationList = 34E47E9F1C7CFDCF002A1949 /* Build configuration list for PBXProject "Wehere" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -266,10 +263,13 @@
 				348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */,
 				347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */,
 				34FEC82D1CABF2EC0089ABF6 /* ConnectSockets.swift in Sources */,
+				34E0B9191CEBEBC200DF027E /* Users.xcdatamodeld in Sources */,
 				347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */,
-				34A9A7271CE7ABD400F33113 /* UpdateSocket.swift in Sources */,
 				34E47EA81C7CFDCF002A1949 /* AppDelegate.swift in Sources */,
+				343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */,
+				34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */,
 				34E393981CAC1543009DC6CA /* UserData.swift in Sources */,
+				34E0B91D1CEBED0900DF027E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34E47E9F1C7CFDCF002A1949 /* Build configuration list for PBXProject "sockets" */ = {
+		34E47E9F1C7CFDCF002A1949 /* Build configuration list for PBXProject "Wehere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34E47EB41C7CFDCF002A1949 /* Debug */,
@@ -422,6 +422,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34E0B9181CEBEBC200DF027E /* Users.xcdatamodel */,
+			);
+			currentVersion = 34E0B9181CEBEBC200DF027E /* Users.xcdatamodel */;
+			path = Users.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 34E47E9C1C7CFDCF002A1949 /* Project object */;
 }

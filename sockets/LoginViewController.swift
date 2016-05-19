@@ -21,23 +21,19 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func lolginButtonTapped(sender: AnyObject) {
+        
         let userEmail = userEmailTextField.text as String!
         let userPassword = userPasswordTextField.text as String!
         
-        
         if (userEmail!.isEmpty || userPassword!.isEmpty) {
-            
-            displayAlert("All fields are required")
+            displayAlert("Все поля обязательны для заполнения")
             return
         }
 //        if userPassword {
@@ -45,29 +41,19 @@ class LoginViewController: UIViewController {
 //        }
         
         let myUrl = NSURL(string: "http://176.56.50.175:8080/core/api/get-token/")
-        
         let params = ["username" : userEmail,"password": userPassword]
         
         Alamofire.request(.POST, myUrl!, parameters: params).responseJSON { response in
-            debugPrint(response.result)
             
-            var token = response.result.value?.valueForKey("token")
-            
+            let token = response.result.value?.valueForKey("token")
             if (ConnectSockets.isConnection){
-                
                 if let getToken = token{
-                    print(getToken)
                     TokenManager.setToken(getToken as! String)
                 }
-                
-                
             }else{
                 print("PUTIN")
             }
-            
-        
-            
-            
+      
 //            if let json = JSON(response.result.value) {
 //                self.token = json["token"].string
 //                TokenManager.mainToken = self.token
@@ -83,21 +69,9 @@ class LoginViewController: UIViewController {
     
     func displayAlert(userMessage:String){
         
-        var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        var okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let myAlert=UIAlertController(title:"Alert",message:userMessage,preferredStyle:UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         myAlert.addAction(okAction)
-        
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

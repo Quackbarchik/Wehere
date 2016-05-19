@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import MapKit
 
 struct TokenManager {
 
@@ -19,6 +20,10 @@ struct TokenManager {
     
     static func getRelation(token:String) ->JSON{
         return ["method":"list_relation","data":["token":"\(token)"]]
+    }
+    
+    static func getUpdate(token:String,deviceID:String,latitude:CLLocationDegrees,longitude:CLLocationDegrees) ->JSON{
+        return ["method":"update","data":["token":"\(token)","device_ID":"\(deviceID)","latitude":"\(latitude)","longitude":"\(longitude)"]]
     }
     
     static func setToken(token:String) {

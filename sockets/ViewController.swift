@@ -10,15 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var usersArray = [UserDataClass]()
     var usersAnnotation = [MKPointAnnotation]()
     
+    var locationManager = CLLocationManager()
+
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func exitButton(sender: AnyObject) {
-        //dropMapndArray()
-        check()
-            }
     
     //--------------------------
 
@@ -26,24 +24,46 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if (ConnectSockets.isConnection) {
             let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(TokenManager.getToken()))"]
             NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
-            
-
         }else{
             print("not")
         }
     }
+    //MARK: LOCATION
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        
+        //PRINT
+        print("Location: \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
+        
+        let device = AppDelegate.UUID //7193E91B-A38D-48EB-920A-9B64A1F5FE8F
+        
+        let update = (TokenManager.getUpdate(TokenManager.getToken(), deviceID: device, latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude))
+        
+        let sendData:[String:AnyObject] = ["message":"\(update)"]
+        NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
+    }
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error from map: ", error.localizedDescription)
+    }
+    func getLocation(){
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        //locationManager.distanceFilter = 1
+        mapView.showsUserLocation = true
+    }
+    
+    //MARK: ViewDidLoad-------------------------
     override func viewDidLoad() {
-        
-    super.viewDidLoad()
-        
+        getLocation()
+
         let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(TokenManager.getToken()))"]
         NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
         
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
     }
-    
+    //MARK: Update and Relation
+
     func update(ns:NSNotification){
         let userUpdate = ns.userInfo!["Relation"] as! UserDataClass
         for user in 0...usersArray.count-1{
@@ -54,21 +74,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         inflateUserMaps()
     }
-
     func realation(ns:NSNotification) {
         let arr = ns.userInfo!["Relation"] as! [UserDataClass]
         usersArray.appendContentsOf(arr)
         inflateUserMaps()
     }
-    
+    //MARK: Adding annotations on map
     func inflateUserMaps(){
-        
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         for user in usersArray{
-            var location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
-            var span = MKCoordinateSpanMake(20, 20)
-            var region = MKCoordinateRegion(center: location, span: span)
+            let location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
+            let span = MKCoordinateSpanMake(20, 20)
+            let region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
@@ -78,14 +96,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         mapView.addAnnotations(usersAnnotation)
     }
-    
+    //Заглушка для выхода-------------------------
     func dropMapAndArray(){
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         usersArray.removeAll()
         self.performSegueWithIdentifier("ExitViewID", sender: self)
     }
-
+    //-------------------------
     override func viewDidAppear(animated: Bool) {
         self.shouldPerformSegueWithIdentifier("loginView", sender: self)
     }

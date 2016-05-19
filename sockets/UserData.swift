@@ -8,10 +8,9 @@
 
 import Foundation
 import MapKit
-
+import CoreData
 class UserDataClass {
     
-    var IMEI : String?
     var latitude : CLLocationDegrees?
     var longitude : CLLocationDegrees?
     var deviceId : String?
@@ -19,10 +18,9 @@ class UserDataClass {
     var name : String?
     var user : String?
     
-    init(IMEI:String,latitude:CLLocationDegrees,longitude:CLLocationDegrees,deviceId:String,link_to_image:String,name:String,user:String){
+    init(latitude:CLLocationDegrees,longitude:CLLocationDegrees,deviceId:String,link_to_image:String,name:String,user:String){
         self.latitude = latitude
         self.longitude = longitude
-        self.IMEI = IMEI
         self.deviceId = deviceId
         self.link_to_image = link_to_image
         self.name = name
