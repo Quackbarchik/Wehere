@@ -65,7 +65,7 @@ class ChildrenViewController: UIViewController, UITableViewDataSource, UITableVi
             
             let fetchedResults = try managedContext.executeFetchRequest(fetchRequest)
             print(fetchedResults.count)
-            for (var i=0; i < fetchedResults.count; i++)
+            for (var i=0; i < fetchedResults.count; i += 1)
             {
                 let single_result = fetchedResults[i]
                 
@@ -75,10 +75,10 @@ class ChildrenViewController: UIViewController, UITableViewDataSource, UITableVi
                 let link_to_image = single_result.valueForKey("link_to_image") as! String
                 let name = single_result.valueForKey("name") as! String
                 let user = single_result.valueForKey("user") as! String
-                var hui = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
-                usersArray.append(hui)
+                let howAreYou = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                usersArray.append(howAreYou)
             
-                TableData.append(hui)
+                TableData.append(howAreYou)
             }
         }
         catch

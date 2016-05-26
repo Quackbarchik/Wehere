@@ -61,7 +61,7 @@ class RegisterPageViewController: UIViewController {
             print(json)
             if let getToken = json["token"].string {
                 TokenManager.setToken(getToken)
-                var storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
                 self.presentViewController(vc, animated: true, completion: nil)
             }else if let error = json["data"]["code"].int {

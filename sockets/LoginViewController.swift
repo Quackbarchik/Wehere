@@ -67,7 +67,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if (ConnectSockets.isConnection){
                 if let getToken = token{
                     TokenManager.setToken(getToken as! String)
-                    var storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
                     self.presentViewController(vc, animated: true, completion: nil)
                     
