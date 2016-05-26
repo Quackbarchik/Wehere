@@ -96,7 +96,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="eO4-RU-BRv" eventType="touchUpInside" id="Zxh-Mf-AU8"/>
-                                    <segue destination="Dly-Fa-4aA" kind="modal" id="UGd-c9-n4S"/>
+                                    <segue destination="Dly-Fa-4aA" kind="modal" id="fw1-3h-AAZ"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DD5-fp-Lzq">
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwV-pX-ohj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2211" y="1273"/>
+            <point key="canvasLocation" x="2649" y="901"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wh5-sz-A22">

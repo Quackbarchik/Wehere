@@ -56,12 +56,14 @@ class RegisterPageViewController: UIViewController {
         let params : [String:String] = ["username" : userEmail!,"password1": userPassword!,"password2": userRepeatPassword!,"name": userName!]
         
         Alamofire.request(.POST, myUrl!, parameters: params).responseJSON { response in
-            
+
             let json = JSON(response.result.value!)
-            
+            print(json)
             if let getToken = json["token"].string {
                 TokenManager.setToken(getToken)
-                self.performSegueWithIdentifier("mapID", sender: self)
+                var storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
+                self.presentViewController(vc, animated: true, completion: nil)
             }else if let error = json["data"]["code"].int {
                 if (error == 1){
                     self.displayAlert("user is exist")

@@ -10,6 +10,7 @@
 		34388FB11CDD4892004027E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34388FB01CDD4892004027E7 /* LoginViewController.swift */; };
 		343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D83441CEA967D002A9421 /* ChildrenAdd.swift */; };
 		343D83471CEA99A4002A9421 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343D83461CEA99A4002A9421 /* CoreData.framework */; };
+		345AF4251CF6A26700EE8192 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AF4241CF6A26700EE8192 /* TabBar.swift */; };
 		347A864B1CA831F7008405A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347A864A1CA831F7008405A9 /* CoreLocation.framework */; };
 		347A864D1CA831FD008405A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347A864C1CA831FD008405A9 /* MapKit.framework */; };
 		347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */; };
@@ -34,6 +35,7 @@
 		34388FB01CDD4892004027E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		343D83441CEA967D002A9421 /* ChildrenAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrenAdd.swift; sourceTree = "<group>"; };
 		343D83461CEA99A4002A9421 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		345AF4241CF6A26700EE8192 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		347A864A1CA831F7008405A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		347A864C1CA831FD008405A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
 				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
+				345AF4241CF6A26700EE8192 /* TabBar.swift */,
 			);
 			name = "Login Signin";
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */,
 				34E393981CAC1543009DC6CA /* UserData.swift in Sources */,
 				34E0B91D1CEBED0900DF027E /* User.swift in Sources */,
+				345AF4251CF6A26700EE8192 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

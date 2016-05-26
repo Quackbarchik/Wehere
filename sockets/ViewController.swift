@@ -66,6 +66,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
+        tabBarController?.tabBar.hidden = false
+        
     }
     //MARK: Update and Relation
 
