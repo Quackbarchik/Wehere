@@ -15,6 +15,8 @@
 		347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */; };
 		347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D22291CDF3A0C0035FA28 /* PeredachaData.swift */; };
 		348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6AA91C9B41760010EB3A /* ViewController.swift */; };
+		34DD87631CF3A40F006FA236 /* ChildrenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */; };
+		34DD87651CF3B735006FA236 /* CellChildrenTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */; };
 		34E0B9191CEBEBC200DF027E /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */; };
 		34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */; };
 		34E0B91D1CEBED0900DF027E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B91B1CEBED0900DF027E /* User.swift */; };
@@ -37,11 +39,13 @@
 		347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		347D22291CDF3A0C0035FA28 /* PeredachaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeredachaData.swift; sourceTree = "<group>"; };
 		348C6AA91C9B41760010EB3A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrenViewController.swift; sourceTree = "<group>"; };
+		34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellChildrenTableView.swift; sourceTree = "<group>"; };
 		34E0B9181CEBEBC200DF027E /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
 		34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		34E0B91B1CEBED0900DF027E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34E393971CAC1543009DC6CA /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		34E47EA41C7CFDCF002A1949 /* sockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E47EA41C7CFDCF002A1949 /* Wehere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wehere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E47EAC1C7CFDCF002A1949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E47EAE1C7CFDCF002A1949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,37 +82,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3424893B1CEE75F00050F0C3 /* Login Signin */ = {
+			isa = PBXGroup;
+			children = (
+				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
+				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
+			);
+			name = "Login Signin";
+			sourceTree = "<group>";
+		};
+		3424893C1CEE76120050F0C3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34E393971CAC1543009DC6CA /* UserData.swift */,
+				347D22291CDF3A0C0035FA28 /* PeredachaData.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3424893F1CEE7CF50050F0C3 /* Childrens */ = {
+			isa = PBXGroup;
+			children = (
+				343D83441CEA967D002A9421 /* ChildrenAdd.swift */,
+				34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */,
+				34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */,
+			);
+			name = Childrens;
+			sourceTree = "<group>";
+		};
 		34E47E9B1C7CFDCF002A1949 = {
 			isa = PBXGroup;
 			children = (
-				34E47EB91C7CFDD8002A1949 /* Podfile */,
-				34E47EA61C7CFDCF002A1949 /* sockets */,
+				34E47EA61C7CFDCF002A1949 /* Wehere */,
 				34E47EA51C7CFDCF002A1949 /* Products */,
 				31927A160F5E4009F5BBAEAC /* Pods */,
 				DFF991B7BD8BFB2E66577E6E /* Frameworks */,
+				34E47EB91C7CFDD8002A1949 /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
 		34E47EA51C7CFDCF002A1949 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34E47EA41C7CFDCF002A1949 /* sockets.app */,
+				34E47EA41C7CFDCF002A1949 /* Wehere.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		34E47EA61C7CFDCF002A1949 /* sockets */ = {
+		34E47EA61C7CFDCF002A1949 /* Wehere */ = {
 			isa = PBXGroup;
 			children = (
 				34E47EA71C7CFDCF002A1949 /* AppDelegate.swift */,
 				348C6AA91C9B41760010EB3A /* ViewController.swift */,
-				343D83441CEA967D002A9421 /* ChildrenAdd.swift */,
 				34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */,
-				34E393971CAC1543009DC6CA /* UserData.swift */,
-				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
-				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
-				347D22291CDF3A0C0035FA28 /* PeredachaData.swift */,
 				34E47EAB1C7CFDCF002A1949 /* Main.storyboard */,
+				3424893F1CEE7CF50050F0C3 /* Childrens */,
+				3424893C1CEE76120050F0C3 /* Controllers */,
+				3424893B1CEE75F00050F0C3 /* Login Signin */,
 				34E47EAE1C7CFDCF002A1949 /* Assets.xcassets */,
 				34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */,
 				34E47EB31C7CFDCF002A1949 /* Info.plist */,
@@ -116,6 +146,7 @@
 				34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */,
 				34E0B91B1CEBED0900DF027E /* User.swift */,
 			);
+			name = Wehere;
 			path = sockets;
 			sourceTree = "<group>";
 		};
@@ -150,7 +181,7 @@
 			);
 			name = sockets;
 			productName = sockets;
-			productReference = 34E47EA41C7CFDCF002A1949 /* sockets.app */;
+			productReference = 34E47EA41C7CFDCF002A1949 /* Wehere.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -266,6 +297,8 @@
 				34E0B9191CEBEBC200DF027E /* Users.xcdatamodeld in Sources */,
 				347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */,
 				34E47EA81C7CFDCF002A1949 /* AppDelegate.swift in Sources */,
+				34DD87651CF3B735006FA236 /* CellChildrenTableView.swift in Sources */,
+				34DD87631CF3A40F006FA236 /* ChildrenViewController.swift in Sources */,
 				343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */,
 				34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */,
 				34E393981CAC1543009DC6CA /* UserData.swift in Sources */,
@@ -381,10 +414,13 @@
 			baseConfigurationReference = 53C7EE2C2CF5B7D7FF0DDC80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sockets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakhar.sockets;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wehere;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -393,10 +429,13 @@
 			baseConfigurationReference = C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sockets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakhar.sockets;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Wehere;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

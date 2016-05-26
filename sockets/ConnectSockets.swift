@@ -9,13 +9,17 @@
 import SwiftWebSocket
 import SwiftyJSON
 import MapKit
+import CoreData
 
 class ConnectSockets : UIViewController {
     
     let ws = WebSocket("ws://176.56.50.175:8000/core/socket/new/")
     var codeError = String()
     static var isConnection :Bool = false
-    var users : UserDataClass!
+    
+    var collectionUser = [UserDataClass]()
+
+    
     
     func sendMessage(notification:NSNotification){
         
@@ -28,7 +32,6 @@ class ConnectSockets : UIViewController {
         
         ws.event.open = {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.sendMessage), name: "socket", object:nil)
-            
             ConnectSockets.isConnection = true
         }
         ws.event.close = { code, reason, clean in
@@ -37,8 +40,8 @@ class ConnectSockets : UIViewController {
         }
         ws.event.message = { message in
             if let text = message as? String {
+                print(text)
                 self.delegateMethod(text)
-                //Здесь приходит ответ в JSON'е, который потом отправляется путешесвтовать в конверт и уже от туда выдергивается код ошибки. РАУНД.
             }
         }
     }
@@ -49,7 +52,7 @@ class ConnectSockets : UIViewController {
             let json = JSON(data:data)
             var method = String()
             method = String(json["method"])
-            
+            print(method)
             if(method=="auth"){
             ws.send(TokenManager.getRelation(TokenManager.getToken()))
             }
@@ -63,7 +66,7 @@ class ConnectSockets : UIViewController {
     }
 
 
-func controllerUpdate(text: String){
+    func controllerUpdate(text: String){
     
     var latitude = CLLocationDegrees()
     var longitude = CLLocationDegrees()
@@ -102,10 +105,11 @@ func controllerUpdate(text: String){
         var name = String()
         var user = String()
         
+//        drop()
+        
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
             let json = JSON(data:data)
             
-            var collectionUser = [UserDataClass]()
             
             for res in json["data"].arrayValue{
 
@@ -122,7 +126,10 @@ func controllerUpdate(text: String){
                 
                 let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
                 
+                save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                
                 collectionUser.append(userPrepare)
+                
                 print("Children count: \(collectionUser.count)")
            
                 let sendData:[String:AnyObject] = ["Relation":collectionUser]
@@ -130,4 +137,47 @@ func controllerUpdate(text: String){
             }
         }
 }
+    
+    func save(latitude:Double,longitude:Double,deviceId:String,link_to_image:String,name:String,user:String)
+    {
+    
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity = NSEntityDescription.entityForName("User",inManagedObjectContext: managedContext)
+        let options = NSManagedObject(entity: entity!,insertIntoManagedObjectContext:managedContext)
+        
+        options.setValue(latitude, forKey: "latitude")
+        options.setValue(longitude, forKey: "longitude")
+        options.setValue(deviceId, forKey: "deviceId")
+        options.setValue(link_to_image, forKey: "link_to_image")
+        options.setValue(name, forKey: "name")
+        options.setValue(user, forKey: "user")
+        
+        do {
+            try managedContext.save()
+        } catch
+        {
+            print("error")
+        }
+    }
+ 
+    func drop()
+    {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let coord = appDelegate.persistentStoreCoordinator
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: managedContext)
+        } catch
+        {
+            print("error")
+        }
+    }
+    
+    
 }

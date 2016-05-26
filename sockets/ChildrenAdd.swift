@@ -10,45 +10,22 @@ import UIKit
 import CoreData
 
 
-class childrenAdd: UIViewController, UITableViewDataSource {
+class childrenAdd: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    var children = [String]()
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var loginField: UITextField!
+    @IBOutlet weak var passField: UITextField!
+    @IBOutlet weak var repeatPassField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "My Family"
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell
-        cell.textLabel!.text = children[indexPath.row]
-        return cell
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return children.count
-    }
-    
-    @IBAction func addChildren(sender: AnyObject) {
-        let alert = UIAlertController(title: "New child",message: "Add a new child",preferredStyle: .Alert)
-        let saveAction = UIAlertAction(title: "Save",style: .Default) { (action: UIAlertAction!) -> Void in
-            
-                                        let textField = alert.textFields![0]
-                                        self.children.append(textField.text!)
-                                        let texts = alert.textFields![1]
-                                        self.children.append(texts.text!)
-                                        self.tableView.reloadData()
+
+        if self.nameField.isEqual(self.loginField){
+            self.loginField.becomeFirstResponder()
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",style: .Default) { (action: UIAlertAction!) -> Void in}
-        
-        alert.addTextFieldWithConfigurationHandler {(textField: UITextField!) -> Void in}
-        alert.addTextFieldWithConfigurationHandler {(texts: UITextField!) -> Void in}
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        presentViewController(alert,animated: true,completion: nil)
+    }
+    
+    @IBAction func registration(sender: AnyObject) {
     }
 }

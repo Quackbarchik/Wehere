@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
@@ -21,13 +21,26 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userPasswordTextField.delegate = self
+        userEmailTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        userEmailTextField.resignFirstResponder()
+        userPasswordTextField.becomeFirstResponder()
+        return true
+    }
+    
     @IBAction func lolginButtonTapped(sender: AnyObject) {
+        userEmailTextField.returnKeyType = UIReturnKeyType.Next
         
         let userEmail = userEmailTextField.text as String!
         let userPassword = userPasswordTextField.text as String!
@@ -36,6 +49,11 @@ class LoginViewController: UIViewController {
             displayAlert("Все поля обязательны для заполнения")
             return
         }
+        self.userEmailTextField.endEditing(true)
+        self.userPasswordTextField.endEditing(true)
+        
+        
+        
 //        if userPassword {
 //            // Проверка на то чтобы не вылетало без кривого пароля, кароч сделать надо так, чтобы сверялся с кодом ошибки, вот
 //        }
@@ -49,6 +67,11 @@ class LoginViewController: UIViewController {
             if (ConnectSockets.isConnection){
                 if let getToken = token{
                     TokenManager.setToken(getToken as! String)
+                    var storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                    
+                    
                 }
             }else{
                 print("PUTIN")
@@ -66,6 +89,8 @@ class LoginViewController: UIViewController {
 //            }
         }
     }
+
+    
     
     func displayAlert(userMessage:String){
         
