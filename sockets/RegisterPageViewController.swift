@@ -17,16 +17,21 @@ class RegisterPageViewController: UIViewController {
     @IBOutlet weak var userPasswordTextFiled: UITextField!
     @IBOutlet weak var repeatPasswordTextFiled: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
-    
-    let viewController : ViewController = ViewController()
-    
+    @IBOutlet weak var signupButton: UIButton!
+
     var token : String = ""
     
     //--------------------------
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+        tabBarController?.tabBar.hidden = false
+        
+        signupButton.layer.cornerRadius = 10
+        signupButton.layer.borderWidth = 1
+        signupButton.layer.borderColor = UIColor.whiteColor().CGColor
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +39,9 @@ class RegisterPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func registerButton(sender: AnyObject) {
         
@@ -41,14 +49,15 @@ class RegisterPageViewController: UIViewController {
         let userPassword = userPasswordTextFiled.text
         let userRepeatPassword = repeatPasswordTextFiled.text
         let userName = userNameTextField.text
+        let error : NSInteger 
         
         if (userEmail!.isEmpty || userPassword!.isEmpty || userRepeatPassword!.isEmpty) {
-            displayAlert("All fields are required")
+            displayAlert("Все поля обязательны для заполнения")
             return
         }
         
         if (userPassword != userRepeatPassword){
-            displayAlert("Passwords do not match")
+            displayAlert("Пароли не совпадают")
             return
         }
        
@@ -64,17 +73,18 @@ class RegisterPageViewController: UIViewController {
                 let storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
                 self.presentViewController(vc, animated: true, completion: nil)
+                
             }else if let error = json["data"]["code"].int {
                 if (error == 1){
-                    self.displayAlert("user is exist")
+                    self.displayAlert("Пользователь уже существует")
                 }
             }
         }
     }
     
     func displayAlert(userMessage:String){
-        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let myAlert = UIAlertController(title: "Предупреждение", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "ОК", style: .Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated: true, completion: nil)
     }

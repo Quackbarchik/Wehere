@@ -15,12 +15,9 @@ class ConnectSockets : UIViewController {
     
     let ws = WebSocket("ws://176.56.50.175:8000/core/socket/new/")
     var codeError = String()
-    static var isConnection :Bool = false
-    
+    static var isConnection : Bool = false
     var collectionUser = [UserDataClass]()
 
-    
-    
     func sendMessage(notification:NSNotification){
         
         if let message = notification.userInfo!["message"]{
@@ -40,7 +37,6 @@ class ConnectSockets : UIViewController {
         }
         ws.event.message = { message in
             if let text = message as? String {
-                print(text)
                 self.delegateMethod(text)
             }
         }
@@ -52,7 +48,6 @@ class ConnectSockets : UIViewController {
             let json = JSON(data:data)
             var method = String()
             method = String(json["method"])
-            print(method)
             if(method=="auth"){
             ws.send(TokenManager.getRelation(TokenManager.getToken()))
             }
@@ -65,39 +60,36 @@ class ConnectSockets : UIViewController {
         }
     }
 
-
     func controllerUpdate(text: String){
     
-    var latitude = CLLocationDegrees()
-    var longitude = CLLocationDegrees()
-    var deviceId = String()
-    var link_to_image = String()
-    var name = String()
-    var user = String()
-    
-    if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
-        let json = JSON(data:data)
-            if let long = CLLocationDegrees(String(json["data","longitude"])) {
-                longitude = long
-            }
-                if let lat = CLLocationDegrees(String(json["data","latitude"])) {
-                    latitude = lat
-                }
-            deviceId = String(json["data","device_ID"])
-            link_to_image = String(json["data","link_to_image"])
-            name = String(json["data","name"])
-            user = String(json["data","user"])
+        var latitude = CLLocationDegrees()
+        var longitude = CLLocationDegrees()
+        var deviceId = String()
+        var link_to_image = String()
+        var name = String()
+        var user = String()
         
-        let dataGood = UserDataClass(latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
-        let sendData:[String:AnyObject] = ["Relation":dataGood]
-        NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
+            let json = JSON(data:data)
+                if let long = CLLocationDegrees(String(json["data","longitude"])) {
+                    longitude = long
+                }
+                    if let lat = CLLocationDegrees(String(json["data","latitude"])) {
+                        latitude = lat
+                    }
+                        deviceId = String(json["data","device_ID"])
+                        link_to_image = String(json["data","link_to_image"])
+                        name = String(json["data","name"])
+                        user = String(json["data","user"])
+        
+                        let dataGood = UserDataClass(latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
+                        let sendData:[String:AnyObject] = ["Relation":dataGood]
+                        NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
+        }
     }
-}
 
     func controllerRelation(text: String){
-       
-    //    let withoutDump  = text.stringByReplacingOccurrencesOfString("[\\[\\]]", withString: "", options: .RegularExpressionSearch)
-        
+   
         var latitude = CLLocationDegrees()
         var longitude = CLLocationDegrees()
         var deviceId = String()
@@ -107,43 +99,34 @@ class ConnectSockets : UIViewController {
         
 //        drop()
         
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
-            let json = JSON(data:data)
-            
-            
-            for res in json["data"].arrayValue{
-
-                if let long = CLLocationDegrees(String(res["longitude"])) {
-                    longitude = long
-                }
-                if let lat = CLLocationDegrees(String(res["latitude"])) {
-                    latitude = lat
-                }
-                deviceId = String(res["device_ID"])
-                link_to_image = String(res["link_to_image"])
-                name = String(res["name"])
-                user = String(res["user"])
-                
-                let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
-                
-                save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
-                
-                collectionUser.append(userPrepare)
-                
-                print("Children count: \(collectionUser.count)")
-           
-                let sendData:[String:AnyObject] = ["Relation":collectionUser]
-                NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
+            if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
+                let json = JSON(data:data)
+                    for res in json["data"].arrayValue{
+                        if let long = CLLocationDegrees(String(res["longitude"])) {
+                            longitude = long
+                        }
+                        if let lat = CLLocationDegrees(String(res["latitude"])) {
+                            latitude = lat
+                        }
+                        deviceId = String(res["device_ID"])
+                        link_to_image = String(res["link_to_image"])
+                        name = String(res["name"])
+                        user = String(res["user"])
+                        
+                        let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                        
+                        save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user) //save into DB
+                        collectionUser.append(userPrepare) //save into array
+                        let sendData:[String:AnyObject] = ["Relation":collectionUser]
+                        NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
+                    }
             }
-        }
-}
+    }
     
-    func save(latitude:Double,longitude:Double,deviceId:String,link_to_image:String,name:String,user:String)
-    {
-    
+    func save(latitude:Double,longitude:Double,deviceId:String,link_to_image:String,name:String,user:String){
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
         let entity = NSEntityDescription.entityForName("User",inManagedObjectContext: managedContext)
         let options = NSManagedObject(entity: entity!,insertIntoManagedObjectContext:managedContext)
         
@@ -154,16 +137,14 @@ class ConnectSockets : UIViewController {
         options.setValue(name, forKey: "name")
         options.setValue(user, forKey: "user")
         
-        do {
-            try managedContext.save()
-        } catch
-        {
-            print("error")
-        }
+            do {
+                try managedContext.save()
+            } catch{
+                print("error")
+            }
     }
  
-    func drop()
-    {
+    func drop(){
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -171,13 +152,10 @@ class ConnectSockets : UIViewController {
         let fetchRequest = NSFetchRequest(entityName: "User")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
-        do {
-            try coord.executeRequest(deleteRequest, withContext: managedContext)
-        } catch
-        {
-            print("error")
-        }
+            do {
+                try coord.executeRequest(deleteRequest, withContext: managedContext)
+            } catch{
+                print("error")
+            }
     }
-    
-    
 }

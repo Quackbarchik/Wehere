@@ -10,6 +10,8 @@ import UIKit
 
 class CellChildrenTableView: UITableViewCell {
 
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameChildren: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -31,17 +31,6 @@
 	<string>test</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>text</string>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>Создать подключение</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Подключиться</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Reg</string>
-		</dict>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

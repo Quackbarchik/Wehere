@@ -9,20 +9,40 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import QuartzCore
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var loginView: UIButton!
 
+    @IBOutlet weak var signupView: UIButton!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
-    var token : String = ""
-
     //--------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userPasswordTextField.delegate = self
         userEmailTextField.delegate = self
+        tabBarController?.tabBar.hidden = false
+        
+        loginView.layer.cornerRadius = 10
+        loginView.layer.borderWidth = 1
+        loginView.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        //color SIGN UP
+        let colorSIGN = UIColor.init(red: 0, green: 122, blue: 255, alpha: 1)
+        signupView.layer.cornerRadius = 10
+        signupView.layer.borderWidth = 1
+        signupView.layer.borderColor = colorSIGN.CGColor
+        
+        signupView.setTitleColor(colorSIGN, forState: UIControlState.Normal)
+       // 0 122 255
+        
+    }
+    
+    override func  viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func lolginButtonTapped(sender: AnyObject) {
+        
         userEmailTextField.returnKeyType = UIReturnKeyType.Next
         
         let userEmail = userEmailTextField.text as String!
@@ -51,9 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         self.userEmailTextField.endEditing(true)
         self.userPasswordTextField.endEditing(true)
-        
-        
-        
+
 //        if userPassword {
 //            // Проверка на то чтобы не вылетало без кривого пароля, кароч сделать надо так, чтобы сверялся с кодом ошибки, вот
 //        }
@@ -69,33 +88,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     TokenManager.setToken(getToken as! String)
                     
                     let storyb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc : ViewController = storyb.instantiateViewControllerWithIdentifier("mapViewID") as! ViewController
-                    self.presentViewController(vc, animated: true, completion: nil)
-                    
-                    
+                    let tabBar : UITabBarController = storyb.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDel.window!.rootViewController = tabBar
                 }
             }else{
-                print("PUTIN")
+                self.displayAlert("Сервер недоступен")
             }
-      
-//            if let json = JSON(response.result.value) {
-//                self.token = json["token"].string
-//                TokenManager.mainToken = self.token
-//            }
-          
-//            if let getToken = json["token"].string {
-//                self.token = getToken
-//                
-//                TokenManager.mainToken = self.token
-//            }
         }
     }
 
-    
-    
     func displayAlert(userMessage:String){
         
-        let myAlert=UIAlertController(title:"Alert",message:userMessage,preferredStyle:UIAlertControllerStyle.Alert)
+        let myAlert=UIAlertController(title:"Предупреждение",message:userMessage,preferredStyle:UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         myAlert.addAction(okAction)
         self.presentViewController(myAlert, animated: true, completion: nil)

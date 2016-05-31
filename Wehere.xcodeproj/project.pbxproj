@@ -84,19 +84,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3424893B1CEE75F00050F0C3 /* Login Signin */ = {
+		3424893B1CEE75F00050F0C3 /* Login Signup */ = {
 			isa = PBXGroup;
 			children = (
 				347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */,
 				34388FB01CDD4892004027E7 /* LoginViewController.swift */,
-				345AF4241CF6A26700EE8192 /* TabBar.swift */,
 			);
-			name = "Login Signin";
+			name = "Login Signup";
 			sourceTree = "<group>";
 		};
 		3424893C1CEE76120050F0C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				345AF4241CF6A26700EE8192 /* TabBar.swift */,
 				34E393971CAC1543009DC6CA /* UserData.swift */,
 				347D22291CDF3A0C0035FA28 /* PeredachaData.swift */,
 			);
@@ -111,6 +111,16 @@
 				34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */,
 			);
 			name = Childrens;
+			sourceTree = "<group>";
+		};
+		345AF4261CF6AE1800EE8192 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */,
+				34E0B91B1CEBED0900DF027E /* User.swift */,
+				34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		34E47E9B1C7CFDCF002A1949 = {
@@ -140,14 +150,12 @@
 				34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */,
 				34E47EAB1C7CFDCF002A1949 /* Main.storyboard */,
 				3424893F1CEE7CF50050F0C3 /* Childrens */,
+				3424893B1CEE75F00050F0C3 /* Login Signup */,
 				3424893C1CEE76120050F0C3 /* Controllers */,
-				3424893B1CEE75F00050F0C3 /* Login Signin */,
 				34E47EAE1C7CFDCF002A1949 /* Assets.xcassets */,
 				34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */,
 				34E47EB31C7CFDCF002A1949 /* Info.plist */,
-				34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */,
-				34E0B91A1CEBED0900DF027E /* User+CoreDataProperties.swift */,
-				34E0B91B1CEBED0900DF027E /* User.swift */,
+				345AF4261CF6AE1800EE8192 /* CoreData */,
 			);
 			name = Wehere;
 			path = sockets;

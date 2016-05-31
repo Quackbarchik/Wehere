@@ -13,21 +13,13 @@ import CoreData
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    static let UUID = (UIDevice.currentDevice().identifierForVendor?.UUIDString)! as String
-
     
+    static let UUID = (UIDevice.currentDevice().identifierForVendor?.UUIDString)! as String
     var window: UIWindow?
-
-    // 3D TOUCH
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-        
-        //Заглушка для 3д тач
-    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         ConnectSockets().connectSockets()
-        
         return true
     }
 

@@ -13,14 +13,14 @@ import CoreData
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
     var usersArray = [UserDataClass]()
     var usersAnnotation = [MKPointAnnotation]()
     var isRelation = true
     var locationManager = CLLocationManager()
-
     @IBOutlet weak var mapView: MKMapView!
     
-    //------
+    //------------------------
     
     func check(){
         if (ConnectSockets.isConnection && isRelation) {
@@ -34,18 +34,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //MARK: LOCATION
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
-        //PRINT
+        let theLocation : MKUserLocation = mapView.userLocation
+        theLocation.title = "Ваша текущая геопозиция"
         print("Location: \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
-        
-        let device = AppDelegate.UUID //7193E91B-A38D-48EB-920A-9B64A1F5FE8F iphone
+        let device = AppDelegate.UUID
         let update = (TokenManager.getUpdate(TokenManager.getToken(), deviceID: device, latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude))
-        
         let sendData:[String:AnyObject] = ["message":"\(update)"]
         NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
     }
+    
+
+    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error from map: ", error.localizedDescription)
     }
+    
     func getLocation(){
         mapView.tintColor = UIColor.init(red: 39, green: 170, blue: 225, alpha: 1)
         locationManager.delegate = self
@@ -60,13 +63,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         getLocation()
 
-        print("huilo")
         let sendData:[String:AnyObject] = ["message":"\(TokenManager.getAuth(TokenManager.getToken()))"]
         NSNotificationCenter.defaultCenter().postNotificationName("socket", object:nil,userInfo: sendData)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(realation), name: "relation", object:nil)
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(update), name: "update", object:nil)
-        tabBarController?.tabBar.hidden = false
         
     }
     //MARK: Update and Relation
@@ -92,9 +93,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         usersAnnotation.removeAll()
         for user in usersArray{
             let location = CLLocationCoordinate2DMake(user.latitude!, user.longitude!)
-          //  let span = MKCoordinateSpanMake(20, 20)
-       //     let region = MKCoordinateRegion(center: location, span: span)
-        //    mapView.setRegion(region, animated: true)
+            let span = MKCoordinateSpanMake(20, 20)
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = user.name
@@ -109,27 +110,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.removeAnnotations(usersAnnotation)
         usersAnnotation.removeAll()
         usersArray.removeAll()
-        self.performSegueWithIdentifier("ExitViewID", sender: self)
+       self.performSegueWithIdentifier("ExitViewID", sender: self)
     }
     //-------------------------
     override func viewDidAppear(animated: Bool) {
         self.shouldPerformSegueWithIdentifier("loginView", sender: self)
-    }
-    //MARK: 3D TOUCH
-    enum Shortcut: String {
-        case openBlue = "Reg"
-    }
-    func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool {
-        
-        var quickActionHandled = false
-        let type = shortcutItem.type.componentsSeparatedByString(".").last!
-        if let shortcutType = Shortcut.init(rawValue: type) {
-            switch shortcutType {
-            case .openBlue:
-                ConnectSockets().connectSockets()
-                quickActionHandled = true
-            }
-        }
-        return quickActionHandled
     }
 }

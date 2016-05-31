@@ -15,11 +15,9 @@ class ChildrenViewController: UIViewController, UITableViewDataSource, UITableVi
  var TableData:Array< UserDataClass > = Array < UserDataClass >()
     @IBOutlet var tableview: UITableView!
     
-    enum ErrorHandler:ErrorType
-    {
+    enum ErrorHandler:ErrorType{
         case ErrorFetchingResults
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +29,16 @@ class ChildrenViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CellChildrenTableView
+        
         
         let data = TableData[indexPath.row]
         
+//            let decodedData = NSData(base64EncodedString: data.link_to_image!, options: NSDataBase64DecodingOptions(rawValue: 0))
+//            let decodedImage = UIImage(data: decodedData!)
         
-        cell.textLabel?.text = data.name
-    //    cell.selectionStyle = UITableViewCellSelectionStyle.init(rawValue: <#T##Int#>)
+    //    cell.thumbnailImageView?.image = data.link_to_image
+        cell.nameChildren.text = data.name
         
         return cell
         

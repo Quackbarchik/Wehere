@@ -10,8 +10,14 @@ import UIKit
 
 class TabBar: UITabBarController {
 
+    
+    override func  viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.hidden = false
 
         // Do any additional setup after loading the view.
     }
@@ -21,7 +27,9 @@ class TabBar: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    print(item.tag)
+    }
     /*
     // MARK: - Navigation
 
