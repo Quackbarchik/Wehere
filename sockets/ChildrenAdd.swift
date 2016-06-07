@@ -54,10 +54,8 @@ class childrenAdd: UIViewController {
         let params : [String:String] = ["name_child":name!,"login_child":login!,"password1":pass!,"password2":repeatPass!]
         let headers = ["Authorization":"Token \(TokenManager.getToken())"]
         Alamofire.request(.POST, myUrl!, parameters: params, headers: headers).responseJSON{ response in
-            debugPrint(response)
+           // debugPrint(response)
             let json = JSON(response.result.value!)
-            print(json)
-            
         }
 
     }

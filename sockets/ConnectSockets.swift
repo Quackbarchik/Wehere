@@ -11,6 +11,7 @@ import SwiftyJSON
 import MapKit
 import CoreData
 
+
 class ConnectSockets : UIViewController {
     
     let ws = WebSocket("ws://176.56.50.175:8000/core/socket/new/")
@@ -49,7 +50,8 @@ class ConnectSockets : UIViewController {
             var method = String()
             method = String(json["method"])
             if(method=="auth"){
-            ws.send(TokenManager.getRelation(TokenManager.getToken()))
+                controllerRelationUserAuth(jsonRaw)
+                ws.send(TokenManager.getRelation(TokenManager.getToken()))
             }
                 else if(method=="list_relation"){
                 controllerRelation(jsonRaw)
@@ -68,6 +70,7 @@ class ConnectSockets : UIViewController {
         var link_to_image = String()
         var name = String()
         var user = String()
+        var root = String()
         
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
             let json = JSON(data:data)
@@ -81,13 +84,49 @@ class ConnectSockets : UIViewController {
                         link_to_image = String(json["data","link_to_image"])
                         name = String(json["data","name"])
                         user = String(json["data","user"])
-        
-                        let dataGood = UserDataClass(latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user)
+                        root = String(json["data","root"])
+            
+                        let dataGood = UserDataClass(latitude:latitude,longitude:longitude,deviceId:deviceId,link_to_image:link_to_image,name:name,user:user,root: root)
                         let sendData:[String:AnyObject] = ["Relation":dataGood]
                         NSNotificationCenter.defaultCenter().postNotificationName("update", object:nil,userInfo: sendData)
         }
     }
 
+    func controllerRelationUserAuth(text: String){
+        
+        var latitude = CLLocationDegrees()
+        var longitude = CLLocationDegrees()
+        var deviceId = String()
+        var link_to_image = String()
+        var name = String()
+        var user = String()
+        var root = String()
+        
+        drop()
+        
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
+            let json = JSON(data:data)
+            for res in json["user"].arrayValue{
+                if let long = CLLocationDegrees(String(res["longitude"])) {
+                    longitude = long
+                }
+                if let lat = CLLocationDegrees(String(res["latitude"])) {
+                    latitude = lat
+                }
+                deviceId = String(res["device_ID"])
+                link_to_image = String(res["link_to_image"])
+                name = String(res["name"])
+                user = String(res["user"])
+                root = String(json["data","root"])
+                
+                let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user,root: root)
+                
+                save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user,root:root) //save into DB
+            
+            }
+        }
+    }
+    
     func controllerRelation(text: String){
    
         var latitude = CLLocationDegrees()
@@ -96,8 +135,7 @@ class ConnectSockets : UIViewController {
         var link_to_image = String()
         var name = String()
         var user = String()
-        
-//        drop()
+        var root = String()
         
             if let data = text.dataUsingEncoding(NSUTF8StringEncoding){
                 let json = JSON(data:data)
@@ -112,10 +150,11 @@ class ConnectSockets : UIViewController {
                         link_to_image = String(res["link_to_image"])
                         name = String(res["name"])
                         user = String(res["user"])
+                        root = String(json["data","root"])
                         
-                        let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user)
+                        let userPrepare = UserDataClass(latitude: latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user,root: root)
                         
-                        save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user) //save into DB
+                        save(latitude, longitude: longitude, deviceId: deviceId, link_to_image: link_to_image, name: name, user: user,root:root) //save into DB
                         collectionUser.append(userPrepare) //save into array
                         let sendData:[String:AnyObject] = ["Relation":collectionUser]
                         NSNotificationCenter.defaultCenter().postNotificationName("relation", object:nil,userInfo: sendData)
@@ -123,7 +162,7 @@ class ConnectSockets : UIViewController {
             }
     }
     
-    func save(latitude:Double,longitude:Double,deviceId:String,link_to_image:String,name:String,user:String){
+    func save(latitude:Double,longitude:Double,deviceId:String,link_to_image:String,name:String,user:String, root: String){
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -136,6 +175,7 @@ class ConnectSockets : UIViewController {
         options.setValue(link_to_image, forKey: "link_to_image")
         options.setValue(name, forKey: "name")
         options.setValue(user, forKey: "user")
+        options.setValue(user, forKey: "root")
         
             do {
                 try managedContext.save()

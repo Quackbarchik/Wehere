@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34388FB11CDD4892004027E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34388FB01CDD4892004027E7 /* LoginViewController.swift */; };
+		343990FA1D0492CD001791C2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343990F91D0492CD001791C2 /* CollectionViewController.swift */; };
 		343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343D83441CEA967D002A9421 /* ChildrenAdd.swift */; };
 		343D83471CEA99A4002A9421 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343D83461CEA99A4002A9421 /* CoreData.framework */; };
 		345AF4251CF6A26700EE8192 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AF4241CF6A26700EE8192 /* TabBar.swift */; };
@@ -16,6 +17,8 @@
 		347BC6C91CDC33CA007EAB4C /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */; };
 		347D222A1CDF3A0C0035FA28 /* PeredachaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347D22291CDF3A0C0035FA28 /* PeredachaData.swift */; };
 		348C6AAA1C9B41760010EB3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6AA91C9B41760010EB3A /* ViewController.swift */; };
+		34BDA7BE1D04CE40007D676B /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34BDA7BD1D04CE40007D676B /* AlamofireImage.framework */; };
+		34D837271D04AE22000DB1FB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D837261D04AE22000DB1FB /* Alamofire.framework */; };
 		34DD87631CF3A40F006FA236 /* ChildrenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */; };
 		34DD87651CF3B735006FA236 /* CellChildrenTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */; };
 		34E0B9191CEBEBC200DF027E /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0B9171CEBEBC200DF027E /* Users.xcdatamodeld */; };
@@ -28,11 +31,14 @@
 		34E47EB21C7CFDCF002A1949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E47EB01C7CFDCF002A1949 /* LaunchScreen.storyboard */; };
 		34E47EBA1C7CFDD8002A1949 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 34E47EB91C7CFDD8002A1949 /* Podfile */; };
 		34FEC82D1CABF2EC0089ABF6 /* ConnectSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */; };
-		8E545EA83A8B07E56F2AA7C6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E243E04F06792B73F35FC1 /* Pods.framework */; };
+		52133621B655C250ADC790EE /* Pods_sockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011A365B3922184F10E73EEB /* Pods_sockets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011A365B3922184F10E73EEB /* Pods_sockets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sockets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3420F5ED1D04BCC200634BB1 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Debug-iphoneos/AlamofireImage.framework"; sourceTree = "<group>"; };
 		34388FB01CDD4892004027E7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		343990F91D0492CD001791C2 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		343D83441CEA967D002A9421 /* ChildrenAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrenAdd.swift; sourceTree = "<group>"; };
 		343D83461CEA99A4002A9421 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		345AF4241CF6A26700EE8192 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -41,6 +47,9 @@
 		347BC6C81CDC33CA007EAB4C /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		347D22291CDF3A0C0035FA28 /* PeredachaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeredachaData.swift; sourceTree = "<group>"; };
 		348C6AA91C9B41760010EB3A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34BDA7BD1D04CE40007D676B /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "DerivedData/sockets/Build/Products/Debug-iphoneos/AlamofireImage.framework"; sourceTree = "<group>"; };
+		34D837261D04AE22000DB1FB /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Wehere-ekutjbcjpayiiafxhyivvyqcaapq/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		34D837281D04AE34000DB1FB /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../Library/Developer/Xcode/DerivedData/Wehere-ekutjbcjpayiiafxhyivvyqcaapq/Build/Products/Debug-iphoneos/AlamofireImage.framework"; sourceTree = "<group>"; };
 		34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildrenViewController.swift; sourceTree = "<group>"; };
 		34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellChildrenTableView.swift; sourceTree = "<group>"; };
 		34E0B9181CEBEBC200DF027E /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
@@ -55,7 +64,9 @@
 		34E47EB31C7CFDCF002A1949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34E47EB91C7CFDD8002A1949 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		34FEC82C1CABF2EC0089ABF6 /* ConnectSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectSockets.swift; sourceTree = "<group>"; };
+		44D1FE57BAD6FDEF3079A1D7 /* Pods-sockets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sockets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sockets/Pods-sockets.debug.xcconfig"; sourceTree = "<group>"; };
 		53C7EE2C2CF5B7D7FF0DDC80 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8E01A9C0BF88123C07F75766 /* Pods-sockets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sockets.release.xcconfig"; path = "Pods/Target Support Files/Pods-sockets/Pods-sockets.release.xcconfig"; sourceTree = "<group>"; };
 		96E243E04F06792B73F35FC1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,10 +76,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34BDA7BE1D04CE40007D676B /* AlamofireImage.framework in Frameworks */,
+				34D837271D04AE22000DB1FB /* Alamofire.framework in Frameworks */,
 				343D83471CEA99A4002A9421 /* CoreData.framework in Frameworks */,
 				347A864D1CA831FD008405A9 /* MapKit.framework in Frameworks */,
 				347A864B1CA831F7008405A9 /* CoreLocation.framework in Frameworks */,
-				8E545EA83A8B07E56F2AA7C6 /* Pods.framework in Frameworks */,
+				52133621B655C250ADC790EE /* Pods_sockets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +93,8 @@
 			children = (
 				53C7EE2C2CF5B7D7FF0DDC80 /* Pods.debug.xcconfig */,
 				C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */,
+				44D1FE57BAD6FDEF3079A1D7 /* Pods-sockets.debug.xcconfig */,
+				8E01A9C0BF88123C07F75766 /* Pods-sockets.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -107,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				343D83441CEA967D002A9421 /* ChildrenAdd.swift */,
-				34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */,
 				34DD87641CF3B735006FA236 /* CellChildrenTableView.swift */,
+				34DD87621CF3A40F006FA236 /* ChildrenViewController.swift */,
+				343990F91D0492CD001791C2 /* CollectionViewController.swift */,
 			);
 			name = Childrens;
 			sourceTree = "<group>";
@@ -164,10 +180,15 @@
 		DFF991B7BD8BFB2E66577E6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34BDA7BD1D04CE40007D676B /* AlamofireImage.framework */,
+				3420F5ED1D04BCC200634BB1 /* AlamofireImage.framework */,
+				34D837281D04AE34000DB1FB /* AlamofireImage.framework */,
+				34D837261D04AE22000DB1FB /* Alamofire.framework */,
 				343D83461CEA99A4002A9421 /* CoreData.framework */,
 				347A864C1CA831FD008405A9 /* MapKit.framework */,
 				347A864A1CA831F7008405A9 /* CoreLocation.framework */,
 				96E243E04F06792B73F35FC1 /* Pods.framework */,
+				011A365B3922184F10E73EEB /* Pods_sockets.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,7 +297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sockets/Pods-sockets-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5B426168398D5CED9E9F9756 /* Embed Pods Frameworks */ = {
@@ -291,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sockets/Pods-sockets-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -310,6 +331,7 @@
 				34E47EA81C7CFDCF002A1949 /* AppDelegate.swift in Sources */,
 				34DD87651CF3B735006FA236 /* CellChildrenTableView.swift in Sources */,
 				34DD87631CF3A40F006FA236 /* ChildrenViewController.swift in Sources */,
+				343990FA1D0492CD001791C2 /* CollectionViewController.swift in Sources */,
 				343D83451CEA967D002A9421 /* ChildrenAdd.swift in Sources */,
 				34E0B91C1CEBED0900DF027E /* User+CoreDataProperties.swift in Sources */,
 				34E393981CAC1543009DC6CA /* UserData.swift in Sources */,
@@ -423,11 +445,16 @@
 		};
 		34E47EB71C7CFDCF002A1949 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53C7EE2C2CF5B7D7FF0DDC80 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 44D1FE57BAD6FDEF3079A1D7 /* Pods-sockets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/sockets/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = sockets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakhar.sockets;
@@ -438,16 +465,21 @@
 		};
 		34E47EB81C7CFDCF002A1949 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5D8C0C666E016970AF99D28 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 8E01A9C0BF88123C07F75766 /* Pods-sockets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/DerivedData/sockets/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = sockets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zakhar.sockets;
 				PRODUCT_NAME = Wehere;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cd7f44c5-ecf2-48bd-aef6-434cce3b238c";
 			};
 			name = Release;
 		};

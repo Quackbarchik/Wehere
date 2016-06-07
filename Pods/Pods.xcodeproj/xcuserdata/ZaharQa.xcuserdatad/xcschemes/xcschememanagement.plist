@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-sockets.xcscheme</key>
+		<key>AlamofireImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-sockets.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3E2F1EE5A4EDEDF83FAE0B121B77E598</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1CCF45EF92984C1967C3A48C88F91BDF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FFEFBBFCF3D4A07CE5CB0BAE1F68487</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,17 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B2073299D13D78DE6F8BD5AE01114F1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC91B071B90656667C4D97A135C56183</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EBDA2B0FDA920F16A15455495ADE93A6</key>
+		<key>CA6D314C520C5867860D8592E28142DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

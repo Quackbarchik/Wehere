@@ -20,5 +20,5 @@ extension User{
     @NSManaged var link_to_image: String?
     @NSManaged var name: String?
     @NSManaged var user: String?
-
+    @NSManaged var root: String?
 }

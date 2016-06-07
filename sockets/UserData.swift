@@ -17,8 +17,10 @@ class UserDataClass {
     var link_to_image : String?
     var name : String?
     var user : String?
+    var root : String?
     
-    init(latitude:CLLocationDegrees,longitude:CLLocationDegrees,deviceId:String,link_to_image:String,name:String,user:String){
+    init(latitude:CLLocationDegrees,longitude:CLLocationDegrees,deviceId:String,link_to_image:String,name:String,user:String,root:String){
+        self.root = root
         self.latitude = latitude
         self.longitude = longitude
         self.deviceId = deviceId

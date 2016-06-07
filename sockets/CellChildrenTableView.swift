@@ -8,19 +8,17 @@
 
 import UIKit
 
-class CellChildrenTableView: UITableViewCell {
+class CellChildrenTableView: UICollectionViewCell {
 
-    @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var nameChildren: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var nameChildren: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
 
 }
